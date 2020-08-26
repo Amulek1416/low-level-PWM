@@ -29,6 +29,14 @@
 #include <stdint.h>
 #include "board_type.h"
 
+// Logic to determine if the board being used is supported
+#if BOARD == _UNO
+    #define BOARD_SUPPORTED
+#else
+    #warning "BOARD_UNSUPPORTED: This may cause undesired operation!"
+    #define BOARD_UNSUPPORTED
+#endif /*BOARD*/
+
 /** @brief Used to define the prescaler of the PWM */
 typedef uint16_t prescaler_t;
 
