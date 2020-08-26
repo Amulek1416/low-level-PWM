@@ -3,7 +3,7 @@
  * 
  */
 
-#include "../../../PWM-lib/PWM.h"
+#include "PWM.h"
 
 void setup(){
 
