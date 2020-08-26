@@ -125,8 +125,9 @@ typedef enum PWM_MODE {
  */
 typedef enum PWM_OUTPUT {
     PWM_DISABLE     = 0,
-    PWM_ENABLE      = 1,
-    PWM_INVERTED    = 2,
+    PWM_TOGG_COMP   = 1,
+    PWM_ENABLE      = 2,
+    PWM_INVERTED    = 3,
 } PWM_OUTPUT;
 
 /**
