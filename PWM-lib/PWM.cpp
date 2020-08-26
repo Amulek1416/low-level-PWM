@@ -2,7 +2,11 @@
  * 
  */
 
+#include "board_type.h"
 #include "PWM.h"
+
+#if defined(BOARD_UNSUPPORTED)
+
 #include <Arduino.h>
 
 void PWM_init(PWM_SIG PWM){ 
@@ -194,4 +198,4 @@ void setDutyCycle(PWM_PIN pin/*, precent*/){ // it says duty xD
 
 }
 
-
+#endif /*BOARD_UNSUPPORTED*/
