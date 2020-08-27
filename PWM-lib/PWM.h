@@ -40,8 +40,44 @@
 /** @brief Used to define the prescaler of the PWM */
 typedef uint16_t prescaler_t;
 
-/** @brief Used to define the desired frequency for the PWM */
-typedef uint32_t freq_t;
+/** 
+ * @brief   Enum of all possible PWM signal frequencies
+ * 
+ * @details Since PWM frequencies are usually set by changing 
+ *          a few bits, this limits the number of possible
+ *          frequencies. This enum helps to set a PWM frequency
+ *          to one available to the specified board. All values 
+ *          are given in Hz with the second underscore signifying 
+ *          a decimal point. 
+ */
+typedef enum PWM_FREQUENCY {
+        _0Hz,
+    // All of these boards have the same available frequencies
+    #if (BOARD == _UNO)         || \
+        (BOARD == _NANO)        || \
+        (BOARD == _MEGA)        || \
+        (BOARD == _MEGA_2560)   || \
+        (BOARD == _MEGA_ADK)    || \
+        (BOARD == _LILYPAD)     || \
+        (BOARD == _LILYPAD_USB)
+        _62500_0Hz,
+        _31372_55Hz,
+        _7812_5Hz,
+        _3921_16Hz,
+        _980_39Hz,
+        _976_56Hz,
+        _490_2Hz,
+        _245_1Hz,
+        _244_14Hz,
+        _122_55Hz,
+        _61_04Hz,
+        _30_64Hz
+    // end UNO, NANO, MEGA, MEGA_ADK, MEGA_2560, LILLYPAD, LILLYPAD_USB
+    #else // There are a large amount of available frequencies available
+        _null_Hz
+    #endif /*BOARD*/
+} PWM_FREQUENCY;
+
 
 /**
  *  @brief  This is to help debug and make sure that the 
@@ -130,23 +166,26 @@ typedef enum PWM_OUTPUT {
     PWM_INVERTED    = 3,
 } PWM_OUTPUT;
 
+typedef enum PWM_LOG {
+    NO_PWM_ERROR,
+    UNDEFINED_PWM_VALUE,
+    INVALID_PWM_FREQ,
+    INVALID_PWM_PIN
+} PWM_ERROR;
+
 /**
  * @brief   A struct that can be used to help set and manage 
  *          different PWM signals
  */
 typedef struct PWM_SIG {
+    union {
+        PWM_FREQUENCY frequency;
+        uint32_t open_frequency;
+    };
     PWM_PIN pin;
     PWM_MODE mode;
-    uint8_t inverted;
-
-    // Since there is no reason both the prescaler and the frequency need
-    // to be set at the same time, lets make this a union to save memory.
-    // Note that more memory will actually be taken up if the prescaler
-    // is used instead, but this just saves and extra 2-4 bytes
-    union {  
-        prescaler_t prescaler;
-        freq_t frequency;
-    };
+    PWM_ADV_MODE advMode;
+    PWM_OUTPUT output;
 } PWM_SIG;
 
 /** 
@@ -165,13 +204,36 @@ void PWM_init(PWM_SIG PWM);
  *                  ensure the programmer is using the correct pin for 
  *                  the specfied board.
  * 
- * @param   freq    freq_t type. This can be used in combinations with 
- *                  the Hz(), kHz, and MHz() macros to easily define the
- *                  desired units in a more readable way
+ * @param   freq    PWM_FREQUENCY type that takes in a specific frequency
  * 
- * @warning This function is still in development
+ * @warning Not all PWM pins can support the frequencies given in PWM_FREQUENCY.
+ *          To see what pins can produce what frequencies, see the board's
+ *          documentaion. There is no guarentee that this function will return
+ *          any errors if a pin doesn't support that frequency.
+ * 
+ * @warning Not all pins can be set to different frequencies. This depends on
+ *          what timer each pin is connected to. See your board's documentaion
+ *          for more information on what pins can have different frequencies.
  */
-void setFreq(PWM_PIN pin, freq_t freq);
+PWM_LOG setFreq(PWM_PIN pin, PWM_FREQUENCY freq);
+
+/**
+ * @brief   Similar to setFreq(), but can take in an unspecified number
+ * 
+ * @details This function exists to be flexible with any boards that may
+ *          potentially have an almost unlimited range of frequencies.
+ * 
+ * @param   pin     PWM_PIN type. This type is used to help debug and 
+ *                  ensure the programmer is using the correct pin for 
+ *                  the specfied board.
+ * 
+ * @param   freq    uint32_t type. This can be used in combinations with 
+ *                  the Hz(), kHz, and MHz() macros to easily define the
+ *                  desired units in a more readable way.
+ * 
+ * @warning This function is not compatible with all boards.
+ */
+void setOpenFrequency(PWM_PIN pin, uint32_t freq);
 
 /**
  * @brief   Gives a phase-shifted PWM signal
