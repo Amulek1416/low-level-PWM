@@ -109,8 +109,44 @@ void setOffset(PWM_PIN pin/*, precent*/){
 
 }
 
-void setDutyCycle(PWM_PIN pin/*, precent*/){ // it says duty xD
+PWM_LOG setDutyCycle(PWM_PIN pin, uint16_t percent){ // it says duty xD
+    PWM_LOG eFlag = (
+        (percent <= 100) ? 
+        NO_PWM_ERROR : 
+        INVALID_PWM_DUTY_CYCLE_VALUE
+    );
+    // This is because the PWM for pins 9 and 10 use a 16-bit timer
+    uint16_t dutyCycle16 = 0;
+    uint8_t dutyCycle8 = 0;
 
+    if((_pin == _9 || pin == _10)
+        dutyCycle16 = (percent * 0xFFFF) / 100;
+    else
+        dutyCycle8 = (percent * 0xFF) / 100;
+
+    switch(pin){
+        case _3:
+            OCR2B = dutyCycle8;
+            break;
+        case _5:
+            OCR0B = dutyCycle8;
+            break;
+        case _6:
+            OCR0A = dutyCycle8;
+            break;
+        case _9:
+            OCR1A = dutyCycle16;
+            break;
+        case _10:
+            OCR1B = dutyCycle16;
+            break;
+        case _11:
+            OCR2A = dutyCycle8;
+            break;
+        default:
+            eFlag = INVALID_PWM_PIN;
+            break;
+    }
 }
 
 
