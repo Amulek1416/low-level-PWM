@@ -188,6 +188,7 @@ typedef struct {
     PWM_ADV_MODE advMode;
     PWM_OUTPUT output;
     uint16_t dutyCycle;
+    uint8_t offset;
 } PWM_SIG;
 
 /** 
