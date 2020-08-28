@@ -1,12 +1,12 @@
 /**
  * 
  */
-#include "../board_type.h"
+#include "board_type.h"
 
 #if BOARD == _UNO
 
 #include <Arduino.h>
-#include "../PWM.h"
+#include "PWM.h"
 
 void setMode(PWM_PIN pin, PWM_MODE mode){
     // Here we need to set the Waveform Generation Mode bits(WGM).
@@ -141,7 +141,7 @@ void setAdvancedMode(PWM_PIN pin, PWM_MODE mode, PWM_ADV_MODE setting) {
                 TCCR1A |= (_BV(WGM11));
                 break;
             case PWM_10bit:
-                TCCR1A |= (_BV(WGM11) | _BV(BGM10));
+                TCCR1A |= (_BV(WGM11) | _BV(WGM10));
                 break;
             case PWM_ICR1:
                 switch(mode){
@@ -204,11 +204,11 @@ void setOutputType(PWM_PIN pin, PWM_OUTPUT type){
                     TCCR2A |= (_BV(COM2A1));
                     break;
                 case PWM_INVERTED:
-                    TCCR2A |= (_BV(COM2A1) | _BV(COM2A2));
+                    TCCR2A |= (_BV(COM2A1) | _BV(COM2A0));
                     break;
                 case PWM_DISABLE:
                 default:
-                    TCCR2A &= ~(_BV(COM2A1) | _BV(COM2A2));
+                    TCCR2A &= ~(_BV(COM2A1) | _BV(COM2A0));
                     break;
             } // end type
             break;
@@ -225,11 +225,11 @@ void setOutputType(PWM_PIN pin, PWM_OUTPUT type){
                     TCCR0A |= (_BV(COM0A1));
                     break;
                 case PWM_INVERTED:
-                    TCCR0A |= (_BV(COM0A1) | _BV(COM0A2));
+                    TCCR0A |= (_BV(COM0A1) | _BV(COM0A0));
                     break;
                 case PWM_DISABLE:
                 default:
-                    TCCR0A &= ~(_BV(COM0A1) | _BV(COM0A2));
+                    TCCR0A &= ~(_BV(COM0A1) | _BV(COM0A0));
                     break;
             } // end type
             break;
@@ -245,11 +245,11 @@ void setOutputType(PWM_PIN pin, PWM_OUTPUT type){
                     TCCR1A |= (_BV(COM1A1));
                     break;
                 case PWM_INVERTED:
-                    TCCR1A |= (_BV(COM1A1) | _BV(COM1A2));
+                    TCCR1A |= (_BV(COM1A1) | _BV(COM1A0));
                     break;
                 case PWM_DISABLE:
                 default:
-                    TCCR1A &= ~(_BV(COM1A1) | _BV(COM1A2));
+                    TCCR1A &= ~(_BV(COM1A1) | _BV(COM1A0));
                     break;
             } // end type
             break;
