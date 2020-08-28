@@ -170,7 +170,8 @@ typedef enum PWM_LOG {
     NO_PWM_ERROR,
     UNDEFINED_PWM_VALUE,
     INVALID_PWM_FREQ,
-    INVALID_PWM_PIN
+    INVALID_PWM_PIN,
+    INVALID_PWM_DUTY_CYCLE_VALUE
 } PWM_ERROR;
 
 /**
@@ -281,9 +282,12 @@ void setAdvancedMode(PWM_PIN pin, PWM_MODE mode, PWM_ADV_MODE setting);
  *                  ensure the programmer is using the correct pin for 
  *                  the specfied board.
  * 
+ * @param   percent uint16_t type. This will take a percentage (0-100)
+ *                  and set it as the duty cycle.
+ * 
  * @warning This function is still in development
  */
-void setDutyCycle(PWM_PIN pin/*, precent*/); // xD duty
+PWM_LOG setDutyCycle(PWM_PIN pin, uint16_t percent); // it says duty :D
 
 /**
  * @brief   Sets desired output type of PWM
