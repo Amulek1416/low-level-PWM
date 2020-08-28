@@ -178,7 +178,7 @@ typedef enum PWM_LOG {
  * @brief   A struct that can be used to help set and manage 
  *          different PWM signals
  */
-typedef struct PWM_SIG {
+typedef struct {
     union {
         PWM_FREQUENCY frequency;
         uint32_t open_frequency;
@@ -187,6 +187,7 @@ typedef struct PWM_SIG {
     PWM_MODE mode;
     PWM_ADV_MODE advMode;
     PWM_OUTPUT output;
+    uint16_t dutyCycle;
 } PWM_SIG;
 
 /** 
@@ -196,7 +197,7 @@ typedef struct PWM_SIG {
  * 
  * @warning This function is still in development
  */
-void PWM_init(PWM_SIG PWM);
+void PWM_init(PWM_SIG *pwm);
 
 /**
  * @brief   Sets the frequency of a PWM signal
