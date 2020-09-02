@@ -1,0 +1,404 @@
+\hypertarget{PWM_8h}{}\doxysection{/home/zac/git/projects/low-\/level-\/\+P\+W\+M/\+P\+W\+M-\/lib/\+P\+WM.h File Reference}
+\label{PWM_8h}\index{/home/zac/git/projects/low-\/level-\/PWM/PWM-\/lib/PWM.h@{/home/zac/git/projects/low-\/level-\/PWM/PWM-\/lib/PWM.h}}
+
+
+Header file for a low-\/level P\+WM library.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}board\+\_\+type.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPWM__SIG}{P\+W\+M\+\_\+\+S\+IG}}
+\begin{DoxyCompactList}\small\item\em A struct that can be used to help set and manage different P\+WM signals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{PWM_8h_affa54e61fa055636763868abdfa2191c}\label{PWM_8h_affa54e61fa055636763868abdfa2191c}} 
+\#define \mbox{\hyperlink{PWM_8h_affa54e61fa055636763868abdfa2191c}{Hz}}(x)~(x)
+\begin{DoxyCompactList}\small\item\em To specify a value in units of Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_a8c75fbde0f43140ef19b54cc1d5131a2}\label{PWM_8h_a8c75fbde0f43140ef19b54cc1d5131a2}} 
+\#define \mbox{\hyperlink{PWM_8h_a8c75fbde0f43140ef19b54cc1d5131a2}{k\+Hz}}(x)~(x $\ast$ 1000)
+\begin{DoxyCompactList}\small\item\em To specify a value in units of k\+Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_a773b77867001931ae8ebdbf9bbc9efbd}\label{PWM_8h_a773b77867001931ae8ebdbf9bbc9efbd}} 
+\#define \mbox{\hyperlink{PWM_8h_a773b77867001931ae8ebdbf9bbc9efbd}{M\+Hz}}(x)~(\mbox{\hyperlink{PWM_8h_a8c75fbde0f43140ef19b54cc1d5131a2}{k\+Hz}}(x) $\ast$ 1000)
+\begin{DoxyCompactList}\small\item\em To specify a value in units of M\+Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_af6840f3b7db052bb9649917d675c99a1}\label{PWM_8h_af6840f3b7db052bb9649917d675c99a1}} 
+\#define \mbox{\hyperlink{PWM_8h_af6840f3b7db052bb9649917d675c99a1}{B\+O\+A\+R\+D\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+ED}}
+\begin{DoxyCompactList}\small\item\em Becomes defined when the board being used isn\textquotesingle{}t supported by this library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{PWM_8h_a4746490ab23effb91bb16c64cf7f8847}\label{PWM_8h_a4746490ab23effb91bb16c64cf7f8847}} 
+typedef uint16\+\_\+t \mbox{\hyperlink{PWM_8h_a4746490ab23effb91bb16c64cf7f8847}{prescaler\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Used to define the prescaler of the P\+WM. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} \mbox{\hyperlink{PWM_8h_a7424c3c612d5f661f43ba0a4088bd022}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}}
+\begin{DoxyCompactList}\small\item\em Enum of all possible P\+WM signal frequencies. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} \mbox{\hyperlink{PWM_8h_aef73ebb5bda08a197b92e94d7f6a602b}{P\+W\+M\+\_\+\+P\+IN}}
+\begin{DoxyCompactList}\small\item\em This is to help debug and make sure that the pin being entered is the correct pin for that specific board. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_a07a7a441c103a7e70f732442f8db056e}\label{PWM_8h_a07a7a441c103a7e70f732442f8db056e}} 
+typedef enum \mbox{\hyperlink{PWM_8h_a0e9f779438c943cb2c08cff23eb1567f}{P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE}} \mbox{\hyperlink{PWM_8h_a07a7a441c103a7e70f732442f8db056e}{P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE}}
+\begin{DoxyCompactList}\small\item\em Different confirgurations that can be applied depending on the timer being used. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}} \mbox{\hyperlink{PWM_8h_af2b3fcbc461b5e841cbe2119e9c5ec5e}{P\+W\+M\+\_\+\+M\+O\+DE}}
+\begin{DoxyCompactList}\small\item\em Generalized P\+WM modes that can be easily be set. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}} \mbox{\hyperlink{PWM_8h_af1a3458cdf0a3a04bc7b8a116fb8c777}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}}
+\begin{DoxyCompactList}\small\item\em This is used to invert and enable/disable the P\+WM signal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_aec4eb9dba3572229b1fd615bb63de2da}\label{PWM_8h_aec4eb9dba3572229b1fd615bb63de2da}} 
+typedef enum \mbox{\hyperlink{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}{P\+W\+M\+\_\+\+L\+OG}} \mbox{\hyperlink{PWM_8h_aec4eb9dba3572229b1fd615bb63de2da}{P\+W\+M\+\_\+\+L\+OG}}
+\begin{DoxyCompactList}\small\item\em This is to make returning specific errors more readable and easier to define. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} \{ \newline
+{\bfseries \+\_\+0\+Hz}, 
+{\bfseries \+\_\+62500\+\_\+0\+Hz}, 
+{\bfseries \+\_\+31372\+\_\+55\+Hz}, 
+{\bfseries \+\_\+7812\+\_\+5\+Hz}, 
+\newline
+{\bfseries \+\_\+3921\+\_\+16\+Hz}, 
+{\bfseries \+\_\+980\+\_\+39\+Hz}, 
+{\bfseries \+\_\+976\+\_\+56\+Hz}, 
+{\bfseries \+\_\+490\+\_\+2\+Hz}, 
+\newline
+{\bfseries \+\_\+245\+\_\+1\+Hz}, 
+{\bfseries \+\_\+244\+\_\+14\+Hz}, 
+{\bfseries \+\_\+122\+\_\+55\+Hz}, 
+{\bfseries \+\_\+61\+\_\+04\+Hz}, 
+\newline
+{\bfseries \+\_\+30\+\_\+64\+Hz}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum of all possible P\+WM signal frequencies. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} \{ \newline
+{\bfseries \+\_\+0} = 0, 
+{\bfseries \+\_\+1} = 1, 
+{\bfseries \+\_\+2} = 2, 
+{\bfseries \+\_\+3} = 3, 
+\newline
+{\bfseries \+\_\+4} = 4, 
+{\bfseries \+\_\+5} = 5, 
+{\bfseries \+\_\+6} = 6, 
+{\bfseries \+\_\+7} = 7, 
+\newline
+{\bfseries \+\_\+8} = 8, 
+{\bfseries \+\_\+9} = 9, 
+{\bfseries \+\_\+10} = 10, 
+{\bfseries \+\_\+11} = 11, 
+\newline
+{\bfseries \+\_\+12} = 12, 
+{\bfseries \+\_\+13} = 13, 
+{\bfseries \+\_\+14} = 14, 
+{\bfseries \+\_\+15} = 15, 
+\newline
+{\bfseries \+\_\+16} = 16, 
+{\bfseries \+\_\+17} = 17, 
+{\bfseries \+\_\+20} = 20
+ \}
+\begin{DoxyCompactList}\small\item\em This is to help debug and make sure that the pin being entered is the correct pin for that specific board. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_a0e9f779438c943cb2c08cff23eb1567f}\label{PWM_8h_a0e9f779438c943cb2c08cff23eb1567f}} 
+enum \mbox{\hyperlink{PWM_8h_a0e9f779438c943cb2c08cff23eb1567f}{P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE}} 
+\begin{DoxyCompactList}\small\item\em Different confirgurations that can be applied depending on the timer being used. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}} 
+\begin{DoxyCompactList}\small\item\em Generalized P\+WM modes that can be easily be set. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}} \{ {\bfseries P\+W\+M\+\_\+\+D\+I\+S\+A\+B\+LE} = 0, 
+{\bfseries P\+W\+M\+\_\+\+T\+O\+G\+G\+\_\+\+C\+O\+MP} = 1, 
+{\bfseries P\+W\+M\+\_\+\+E\+N\+A\+B\+LE} = 2, 
+{\bfseries P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+ED} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em This is used to invert and enable/disable the P\+WM signal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}\label{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}} 
+enum \mbox{\hyperlink{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}{P\+W\+M\+\_\+\+L\+OG}} \{ \newline
+{\bfseries N\+O\+\_\+\+P\+W\+M\+\_\+\+E\+R\+R\+OR}, 
+{\bfseries U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+P\+W\+M\+\_\+\+V\+A\+L\+UE}, 
+{\bfseries I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+W\+M\+\_\+\+F\+R\+EQ}, 
+{\bfseries I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+W\+M\+\_\+\+P\+IN}, 
+\newline
+{\bfseries I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+W\+M\+\_\+\+D\+U\+T\+Y\+\_\+\+C\+Y\+C\+L\+E\+\_\+\+V\+A\+L\+UE}
+ \}
+\begin{DoxyCompactList}\small\item\em This is to make returning specific errors more readable and easier to define. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{PWM_8h_ad2bd46c5cea1bb6fa2f126513ff5d9f2}{P\+W\+M\+\_\+init}} (\mbox{\hyperlink{structPWM__SIG}{P\+W\+M\+\_\+\+S\+IG}} $\ast$pwm)
+\begin{DoxyCompactList}\small\item\em Initializes P\+WM signal based on settings set in a \mbox{\hyperlink{structPWM__SIG}{P\+W\+M\+\_\+\+S\+IG}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}{P\+W\+M\+\_\+\+L\+OG}} \mbox{\hyperlink{PWM_8h_a88d99228d542ad86e9a34c37622d9227}{set\+Freq}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin, \mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} freq)
+\begin{DoxyCompactList}\small\item\em Sets the frequency of a P\+WM signal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PWM_8h_a6da181d762f9832d927ba3943df3ba2b}{set\+Open\+Frequency}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin, uint32\+\_\+t freq)
+\begin{DoxyCompactList}\small\item\em Similar to \mbox{\hyperlink{PWM_8h_a88d99228d542ad86e9a34c37622d9227}{set\+Freq()}}, but can take in an unspecified number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PWM_8h_a42aafd654a556111eaac7ee4f2c684c1}{set\+Offset}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin)
+\begin{DoxyCompactList}\small\item\em Gives a phase-\/shifted P\+WM signal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PWM_8h_af01678491e6ca2903849ab4ec9aa6155}{set\+Mode}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin, \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}} mode)
+\begin{DoxyCompactList}\small\item\em Sets general settings for given P\+WM mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PWM_8h_ac7d1ab61ea8048735c748cdfa5b83c42}{set\+Advanced\+Mode}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin, \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}} mode, \mbox{\hyperlink{PWM_8h_a0e9f779438c943cb2c08cff23eb1567f}{P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE}} setting)
+\begin{DoxyCompactList}\small\item\em Used in combination with \mbox{\hyperlink{PWM_8h_af01678491e6ca2903849ab4ec9aa6155}{set\+Mode()}} to have finer control over P\+WM settings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}{P\+W\+M\+\_\+\+L\+OG}} \mbox{\hyperlink{PWM_8h_ad3d278779d509e84f34680675a01bd2f}{set\+Duty\+Cycle}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin, uint16\+\_\+t percent)
+\begin{DoxyCompactList}\small\item\em Sets the duty cycle for a given P\+WM. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{PWM_8h_acb560187e8dab2f9b22334c6e540fc2a}{set\+Output\+Type}} (\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} pin, \mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}} type)
+\begin{DoxyCompactList}\small\item\em Sets desired output type of P\+WM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for a low-\/level P\+WM library. 
+
+\begin{DoxyDate}{Date}
+Aug 25 2020 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Amulek1416
+\end{DoxyAuthor}
+This is a low-\/level P\+WM library that gives a large amount of configuration options that the standard Arduino library doesn\textquotesingle{}t provide.
+
+\begin{DoxyWarning}{Warning}
+None of this has been tested due to my current lack of an oscilloscope. However, it does compile. 
+\end{DoxyWarning}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{PWM_8h_a7424c3c612d5f661f43ba0a4088bd022}\label{PWM_8h_a7424c3c612d5f661f43ba0a4088bd022}} 
+\index{PWM.h@{PWM.h}!PWM\_FREQUENCY@{PWM\_FREQUENCY}}
+\index{PWM\_FREQUENCY@{PWM\_FREQUENCY}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_FREQUENCY}{PWM\_FREQUENCY}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} \mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}}}
+
+
+
+Enum of all possible P\+WM signal frequencies. 
+
+Since P\+WM frequencies are usually set by changing a few bits, this limits the number of possible frequencies. This enum helps to set a P\+WM frequency to one available to the specified board. All values are given in Hz with the second underscore signifying a decimal point. \mbox{\Hypertarget{PWM_8h_af2b3fcbc461b5e841cbe2119e9c5ec5e}\label{PWM_8h_af2b3fcbc461b5e841cbe2119e9c5ec5e}} 
+\index{PWM.h@{PWM.h}!PWM\_MODE@{PWM\_MODE}}
+\index{PWM\_MODE@{PWM\_MODE}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_MODE}{PWM\_MODE}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}} \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}}}
+
+
+
+Generalized P\+WM modes that can be easily be set. 
+
+This can be used along with P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE to have fine control over the P\+WM modes. \mbox{\Hypertarget{PWM_8h_af1a3458cdf0a3a04bc7b8a116fb8c777}\label{PWM_8h_af1a3458cdf0a3a04bc7b8a116fb8c777}} 
+\index{PWM.h@{PWM.h}!PWM\_OUTPUT@{PWM\_OUTPUT}}
+\index{PWM\_OUTPUT@{PWM\_OUTPUT}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_OUTPUT}{PWM\_OUTPUT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}} \mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}}}
+
+
+
+This is used to invert and enable/disable the P\+WM signal. 
+
+If P\+W\+M\+\_\+\+E\+N\+A\+B\+LE is selected, it will produce a non-\/inverted P\+WM signal. If P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+ED is selected, it will enable the P\+WM as well as invert the P\+WM signal. \mbox{\Hypertarget{PWM_8h_aef73ebb5bda08a197b92e94d7f6a602b}\label{PWM_8h_aef73ebb5bda08a197b92e94d7f6a602b}} 
+\index{PWM.h@{PWM.h}!PWM\_PIN@{PWM\_PIN}}
+\index{PWM\_PIN@{PWM\_PIN}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_PIN}{PWM\_PIN}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}} \mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}
+
+
+
+This is to help debug and make sure that the pin being entered is the correct pin for that specific board. 
+
+Since some boards may not be defined, there are 20 pins available by default. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}\label{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}} 
+\index{PWM.h@{PWM.h}!PWM\_FREQUENCY@{PWM\_FREQUENCY}}
+\index{PWM\_FREQUENCY@{PWM\_FREQUENCY}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_FREQUENCY}{PWM\_FREQUENCY}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}}}
+
+
+
+Enum of all possible P\+WM signal frequencies. 
+
+Since P\+WM frequencies are usually set by changing a few bits, this limits the number of possible frequencies. This enum helps to set a P\+WM frequency to one available to the specified board. All values are given in Hz with the second underscore signifying a decimal point. \mbox{\Hypertarget{PWM_8h_ae99d8592e5fac21551d240db82849d09}\label{PWM_8h_ae99d8592e5fac21551d240db82849d09}} 
+\index{PWM.h@{PWM.h}!PWM\_MODE@{PWM\_MODE}}
+\index{PWM\_MODE@{PWM\_MODE}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_MODE}{PWM\_MODE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}}}
+
+
+
+Generalized P\+WM modes that can be easily be set. 
+
+This can be used along with P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE to have fine control over the P\+WM modes. \mbox{\Hypertarget{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}\label{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}} 
+\index{PWM.h@{PWM.h}!PWM\_OUTPUT@{PWM\_OUTPUT}}
+\index{PWM\_OUTPUT@{PWM\_OUTPUT}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_OUTPUT}{PWM\_OUTPUT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}}}
+
+
+
+This is used to invert and enable/disable the P\+WM signal. 
+
+If P\+W\+M\+\_\+\+E\+N\+A\+B\+LE is selected, it will produce a non-\/inverted P\+WM signal. If P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+ED is selected, it will enable the P\+WM as well as invert the P\+WM signal. \mbox{\Hypertarget{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}\label{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}} 
+\index{PWM.h@{PWM.h}!PWM\_PIN@{PWM\_PIN}}
+\index{PWM\_PIN@{PWM\_PIN}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_PIN}{PWM\_PIN}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}
+
+
+
+This is to help debug and make sure that the pin being entered is the correct pin for that specific board. 
+
+Since some boards may not be defined, there are 20 pins available by default. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{PWM_8h_ad2bd46c5cea1bb6fa2f126513ff5d9f2}\label{PWM_8h_ad2bd46c5cea1bb6fa2f126513ff5d9f2}} 
+\index{PWM.h@{PWM.h}!PWM\_init@{PWM\_init}}
+\index{PWM\_init@{PWM\_init}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{PWM\_init()}{PWM\_init()}}
+{\footnotesize\ttfamily void P\+W\+M\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPWM__SIG}{P\+W\+M\+\_\+\+S\+IG}} $\ast$}]{pwm }\end{DoxyParamCaption})}
+
+
+
+Initializes P\+WM signal based on settings set in a \mbox{\hyperlink{structPWM__SIG}{P\+W\+M\+\_\+\+S\+IG}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pwm} & A \mbox{\hyperlink{structPWM__SIG}{P\+W\+M\+\_\+\+S\+IG}} pointer type containing all P\+WM settings\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function is still in development 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_ac7d1ab61ea8048735c748cdfa5b83c42}\label{PWM_8h_ac7d1ab61ea8048735c748cdfa5b83c42}} 
+\index{PWM.h@{PWM.h}!setAdvancedMode@{setAdvancedMode}}
+\index{setAdvancedMode@{setAdvancedMode}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setAdvancedMode()}{setAdvancedMode()}}
+{\footnotesize\ttfamily void set\+Advanced\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin,  }\item[{\mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}}}]{mode,  }\item[{\mbox{\hyperlink{PWM_8h_a0e9f779438c943cb2c08cff23eb1567f}{P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE}}}]{setting }\end{DoxyParamCaption})}
+
+
+
+Used in combination with \mbox{\hyperlink{PWM_8h_af01678491e6ca2903849ab4ec9aa6155}{set\+Mode()}} to have finer control over P\+WM settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & P\+W\+M\+\_\+\+P\+IN type. This type is used to help debug and ensure the programmer is using the correct pin for the specfied board.\\
+\hline
+{\em mode} & P\+W\+M\+\_\+\+M\+O\+DE type. Basic settings for different P\+WM modes.\\
+\hline
+{\em setting} & P\+W\+M\+\_\+\+A\+D\+V\+\_\+\+M\+O\+DE type. This is where finer controls can be set for different P\+WM modes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function is still in development 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_ad3d278779d509e84f34680675a01bd2f}\label{PWM_8h_ad3d278779d509e84f34680675a01bd2f}} 
+\index{PWM.h@{PWM.h}!setDutyCycle@{setDutyCycle}}
+\index{setDutyCycle@{setDutyCycle}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setDutyCycle()}{setDutyCycle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}{P\+W\+M\+\_\+\+L\+OG}} set\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin,  }\item[{uint16\+\_\+t}]{percent }\end{DoxyParamCaption})}
+
+
+
+Sets the duty cycle for a given P\+WM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & P\+W\+M\+\_\+\+P\+IN type. This type is used to help debug and ensure the programmer is using the correct pin for the specfied board.\\
+\hline
+{\em percent} & uint16\+\_\+t type. This will take a percentage (0-\/100) and set it as the duty cycle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function is still in development 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_a88d99228d542ad86e9a34c37622d9227}\label{PWM_8h_a88d99228d542ad86e9a34c37622d9227}} 
+\index{PWM.h@{PWM.h}!setFreq@{setFreq}}
+\index{setFreq@{setFreq}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setFreq()}{setFreq()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{PWM_8h_a2f6139ca13e4c43fcffbe8373e620001}{P\+W\+M\+\_\+\+L\+OG}} set\+Freq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin,  }\item[{\mbox{\hyperlink{PWM_8h_a676eff63e4b541c9b9277bd2d5e00b07}{P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}}}]{freq }\end{DoxyParamCaption})}
+
+
+
+Sets the frequency of a P\+WM signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & P\+W\+M\+\_\+\+P\+IN type. This type is used to help debug and ensure the programmer is using the correct pin for the specfied board.\\
+\hline
+{\em freq} & P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY type that takes in a specific frequency\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Not all P\+WM pins can support the frequencies given in P\+W\+M\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY. To see what pins can produce what frequencies, see the board\textquotesingle{}s documentaion. There is no guarentee that this function will return any errors if a pin doesn\textquotesingle{}t support that frequency.
+
+Not all pins can be set to different frequencies. This depends on what timer each pin is connected to. See your board\textquotesingle{}s documentaion for more information on what pins can have different frequencies. 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_af01678491e6ca2903849ab4ec9aa6155}\label{PWM_8h_af01678491e6ca2903849ab4ec9aa6155}} 
+\index{PWM.h@{PWM.h}!setMode@{setMode}}
+\index{setMode@{setMode}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily void set\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin,  }\item[{\mbox{\hyperlink{PWM_8h_ae99d8592e5fac21551d240db82849d09}{P\+W\+M\+\_\+\+M\+O\+DE}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets general settings for given P\+WM mode. 
+
+\begin{DoxyNote}{Note}
+For more advanced settings, see \mbox{\hyperlink{PWM_8h_ac7d1ab61ea8048735c748cdfa5b83c42}{set\+Advanced\+Mode()}}
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & P\+W\+M\+\_\+\+P\+IN type. This type is used to help debug and ensure the programmer is using the correct pin for the specfied board.\\
+\hline
+{\em mode} & P\+W\+M\+\_\+\+M\+O\+DE type. Basic settings for different P\+WM modes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function is still in development 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_a42aafd654a556111eaac7ee4f2c684c1}\label{PWM_8h_a42aafd654a556111eaac7ee4f2c684c1}} 
+\index{PWM.h@{PWM.h}!setOffset@{setOffset}}
+\index{setOffset@{setOffset}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setOffset()}{setOffset()}}
+{\footnotesize\ttfamily void set\+Offset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin }\end{DoxyParamCaption})}
+
+
+
+Gives a phase-\/shifted P\+WM signal. 
+
+\begin{DoxyWarning}{Warning}
+This functions is still in development 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_a6da181d762f9832d927ba3943df3ba2b}\label{PWM_8h_a6da181d762f9832d927ba3943df3ba2b}} 
+\index{PWM.h@{PWM.h}!setOpenFrequency@{setOpenFrequency}}
+\index{setOpenFrequency@{setOpenFrequency}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setOpenFrequency()}{setOpenFrequency()}}
+{\footnotesize\ttfamily void set\+Open\+Frequency (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin,  }\item[{uint32\+\_\+t}]{freq }\end{DoxyParamCaption})}
+
+
+
+Similar to \mbox{\hyperlink{PWM_8h_a88d99228d542ad86e9a34c37622d9227}{set\+Freq()}}, but can take in an unspecified number. 
+
+This function exists to be flexible with any boards that may potentially have an almost unlimited range of frequencies.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & P\+W\+M\+\_\+\+P\+IN type. This type is used to help debug and ensure the programmer is using the correct pin for the specfied board.\\
+\hline
+{\em freq} & uint32\+\_\+t type. This can be used in combinations with the \mbox{\hyperlink{PWM_8h_affa54e61fa055636763868abdfa2191c}{Hz()}}, k\+Hz, and \mbox{\hyperlink{PWM_8h_a773b77867001931ae8ebdbf9bbc9efbd}{M\+Hz()}} macros to easily define the desired units in a more readable way.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function is not compatible with all boards. 
+\end{DoxyWarning}
+\mbox{\Hypertarget{PWM_8h_acb560187e8dab2f9b22334c6e540fc2a}\label{PWM_8h_acb560187e8dab2f9b22334c6e540fc2a}} 
+\index{PWM.h@{PWM.h}!setOutputType@{setOutputType}}
+\index{setOutputType@{setOutputType}!PWM.h@{PWM.h}}
+\doxysubsubsection{\texorpdfstring{setOutputType()}{setOutputType()}}
+{\footnotesize\ttfamily void set\+Output\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{PWM_8h_a7d6485bcafa445aa217077dd4e022a08}{P\+W\+M\+\_\+\+P\+IN}}}]{pin,  }\item[{\mbox{\hyperlink{PWM_8h_aa20bb61891c27cceaa00a6e10d47db33}{P\+W\+M\+\_\+\+O\+U\+T\+P\+UT}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Sets desired output type of P\+WM. 
+
+The different outputs are enabled, disabled, and inverted. See P\+W\+M\+\_\+\+O\+U\+T\+P\+UT for more information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & P\+W\+M\+\_\+\+P\+IN type. This type is used to help debug and ensure the programmer is using the correct pin for the specfied board.\\
+\hline
+{\em type} & P\+W\+M\+\_\+\+O\+U\+T\+P\+UT type. This is to enable/disable/invert P\+WM signal.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This function is still in development 
+\end{DoxyWarning}
