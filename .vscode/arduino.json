@@ -1,0 +1,6 @@
+{
+    "port": "/dev/ttyS0",
+    "board": "arduino:avr:uno",
+    "programmer": "AVR ISP",
+    "sketch": "PWM-lib/PWM-lib.ino"
+}

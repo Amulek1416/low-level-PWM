@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.inc": "arm",
+        "functional": "cpp"
+    }
+}
