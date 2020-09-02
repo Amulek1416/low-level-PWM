@@ -33,3 +33,6 @@
 
 # IDE's
 .vscode
+
+# Documentation
+docs/html/
