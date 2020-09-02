@@ -31,10 +31,12 @@
 
 // Logic to determine if the board being used is supported
 #if BOARD == _UNO
+    /** @brief Becomes defined if a board is supported by this library */
     #define BOARD_SUPPORTED
 #else
-    #warning "BOARD_UNSUPPORTED: This may cause undesired operation!"
+    /** @brief Becomes defined when the board being used isn't supported by this library */
     #define BOARD_UNSUPPORTED
+    #warning "BOARD_UNSUPPORTED: This may cause undesired operation!"
 #endif /*BOARD*/
 
 /** @brief Used to define the prescaler of the PWM */
@@ -80,7 +82,7 @@ typedef enum PWM_FREQUENCY {
 
 
 /**
- *  @brief  This is to help debug and make sure that the 
+ * @brief   This is to help debug and make sure that the 
  *          pin being entered is the correct pin for that 
  *          specific board.
  * 
@@ -166,15 +168,20 @@ typedef enum PWM_OUTPUT {
     PWM_INVERTED    = 3,
 } PWM_OUTPUT;
 
+/**
+ * @brief   This is to make returning specific errors more readable
+ *          and easier to define.
+ */
 typedef enum PWM_LOG {
     NO_PWM_ERROR,
     UNDEFINED_PWM_VALUE,
     INVALID_PWM_FREQ,
     INVALID_PWM_PIN,
     INVALID_PWM_DUTY_CYCLE_VALUE
-} PWM_ERROR;
+} PWM_LOG;
 
 /**
+ * @struct  PWM_SIG
  * @brief   A struct that can be used to help set and manage 
  *          different PWM signals
  */
@@ -194,7 +201,7 @@ typedef struct {
 /** 
  * @brief   Initializes PWM signal based on settings set in a PWM_SIG
  * 
- * @param   PWM     A PWM_SIG type containing all PWM settings
+ * @param   pwm     A PWM_SIG pointer type containing all PWM settings
  * 
  * @warning This function is still in development
  */
@@ -300,6 +307,9 @@ PWM_LOG setDutyCycle(PWM_PIN pin, uint16_t percent); // it says duty :D
  * @param   pin     PWM_PIN type. This type is used to help debug and 
  *                  ensure the programmer is using the correct pin for 
  *                  the specfied board.
+ * 
+ * @param   type    PWM_OUTPUT type. This is to enable/disable/invert
+ *                  PWM signal.
  * 
  * @warning This function is still in development
  */
